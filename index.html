@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="stilark.css">
+</head>
+<body>
+<div id="hoved">
+    <h1> Spørreundersøkelse </h1>
+
+    <div class="radioknapper">
+        <h3>Messi er verdens beste fotballspiller</h3>
+        <label>
+            <input type="radio" name="sp1" value="enig" id="enigSp1"> Enig
+        </label>
+        <label>
+            <input type="radio" name="sp1" value="uenig" id="uenigSp1"> Uenig
+        </label>
+    </div>
+
+    <div class="radioknapper">
+        <h3>Premier League er den beste ligaen</h3>
+        <label>
+            <input type="radio" name="sp2" value="enig" id="enigSp2"> Enig
+        </label>
+        <label>
+            <input type="radio" name="sp2" value="uenig" id="uenigSp2"> Uenig
+        </label>
+    </div>
+
+    <div class="radioknapper">
+        <h3>Real Madrid har alltid vært bedre enn Barcelona</h3>
+        <label>
+            <input type="radio" name="sp3" value="enig" id="enigSp3"> Enig
+        </label>
+        <label>
+            <input type="radio" name="sp3" value="uenig" id="uenigSp3"> Uenig
+        </label>
+    </div>
+
+    <div class="radioknapper">
+        <h3>Fotball er den beste oppfinnelsen gjennom tidene</h3>
+        <label>
+            <input type="radio" name="sp4" value="enig" id="enigSp4"> Enig
+        </label>
+        <label>
+            <input type="radio" name="sp4" value="uenig" id="uenigSp4"> Uenig
+        </label>
+    </div>
+    <br>
+    <button id="svar" type="button">Svar</button>
+    <button onclick="window.location.href='resultat.html'"   id="resultat" type="button">Resultat</button>
+</div>
+
+<div id="box">
+    <h1>Resultater</h1>
+    <br>
+    <div id="resSp1">
+        <h3>Messi er verdens beste fotballspiller</h3>
+    </div>
+    <div id="resSp1Bar"></div>
+    <div id="resSp2">
+        <h3>Premier League er den beste ligaen</h3>
+    </div>
+    <div id="resSp2Bar"></div>
+    <div id="resSp3">
+        <h3> Real Madrid har alltid vært bedre enn Barcelona</h3>
+    </div>
+    <div id="resSp3Bar"></div>
+    <div id="resSp4">
+        <h3>Fotball er den beste oppfinnelsen gjennom tiden</h3>
+    </div>
+    <div id="resSp4Bar"></div>
+
+
+
+
+<script>
+let enigSp1 = 0;   //de 4 første variablene er de som blir brukt til å telle antall enige på spørsmålet
+let enigSp2 = 0;
+let enigSp3 = 0;
+let enigSp4 = 0;
+let enigSp1El = document.querySelector('#enigSp1');   //henter verdiene til radioknappene fra html
+let enigSp2El = document.querySelector('#enigSp2');
+let enigSp3El = document.querySelector('#enigSp3');
+let enigSp4El = document.querySelector('#enigSp4');
+let svarEl = document.querySelector('#svar');       //henter verdien til svar knappen
+let antallSvar = 0;  // brukes til å telle anttal ganger svar er trykket
+let resultatEl = document.querySelector('#resultat')  //henter verdien til resultat knappen
+
+
+svarEl.onclick = function () {   //funksjonen plusser på 1 til verdien til knappene som er trykket inn
+    antallSvar++;
+    console.log("antall svar: " + antallSvar);
+    if(enigSp1El.checked) {
+        enigSp1++;
+    } if (enigSp2El.checked) {
+        enigSp2++;
+    } if (enigSp3El.checked) {
+        enigSp3++;
+    } if (enigSp4El.checked) {
+        enigSp4++;
+    }
+
+}
+
+resultatEl.onclick = function () {
+    document.getElementById("resSp1Bar").style.width = enigSp1/antallSvar*100+"%";
+    document.getElementById("resSp2Bar").style.width = enigSp2/antallSvar*100+"%";
+    document.getElementById("resSp3Bar").style.width = enigSp3/antallSvar*100+"%";
+    document.getElementById("resSp4Bar").style.width = enigSp4/antallSvar*100+"%";
+}
+
+document.getElementById("resSp1Bar").style.backgroundColor = "red";
+document.getElementById("resSp1Bar").style.width = 0+ "%";
+document.getElementById("resSp2Bar").style.backgroundColor = "blue";
+document.getElementById("resSp2Bar").style.width = 0+ "%";
+document.getElementById("resSp3Bar").style.backgroundColor = "green";
+document.getElementById("resSp3Bar").style.width = 0+ "%";
+document.getElementById("resSp4Bar").style.backgroundColor = "orange";
+document.getElementById("resSp4Bar").style.width = 0+"%";
+
+</script>
+</body>
+</html>
